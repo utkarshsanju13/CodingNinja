@@ -42,43 +42,43 @@ Sample Input 2 :
 0 3*/
 
 public class GetPathDFS {
-	
+
 	public static void main(String[] args) throws NumberFormatException, IOException {
-        
-        /* Write Your Code Here
-		 * Complete the Rest of the Program
-		 * You have to take input and print the output yourself
+
+		/*
+		 * Write Your Code Here Complete the Rest of the Program You have to take input
+		 * and print the output yourself
 		 */
 
-		 Scanner sc = new Scanner(System.in);
-		 int v = sc.nextInt();
-		 int e = sc.nextInt();
+		Scanner sc = new Scanner(System.in);
+		int v = sc.nextInt();
+		int e = sc.nextInt();
 
-		int [][] matrix = new int[v][v];
-		 for(int i = 0 ; i < e; i++){
-			 int v1 = sc.nextInt();
-			 int v2 = sc.nextInt();
+		int[][] matrix = new int[v][v];
+		for (int i = 0; i < e; i++) {
+			int v1 = sc.nextInt();
+			int v2 = sc.nextInt();
 
 			matrix[v1][v2] = 1;
 			matrix[v2][v1] = 1;
-		 }
+		}
 
-		 int s = sc.nextInt();
-		 int d = sc.nextInt();
+		int s = sc.nextInt();
+		int d = sc.nextInt();
 		boolean visited[] = new boolean[v];
-		 ArrayList<Integer> result = getPathDFS(matrix, s, d, visited);
+		ArrayList<Integer> result = getPathDFS(matrix, s, d, visited);
 
-		 if(result!=null){
-			 for(int i: result){
-				 System.out.print(i+" ");
-			 }
-		 }
+		if (result != null) {
+			for (int i : result) {
+				System.out.print(i + " ");
+			}
+		}
 
 	}
 
-	public static ArrayList<Integer> getPathDFS(int [][] matrix, int s, int d, boolean[] visited){
+	public static ArrayList<Integer> getPathDFS(int[][] matrix, int s, int d, boolean[] visited) {
 
-		if(s == d){
+		if (s == d) {
 			ArrayList<Integer> ans = new ArrayList<>();
 			ans.add(s);
 			visited[s] = true;
@@ -88,13 +88,13 @@ public class GetPathDFS {
 
 		visited[s] = true;
 
-		for(int i = 0 ; i< matrix.length; i++){
+		for (int i = 0; i < matrix.length; i++) {
 
-			if(matrix[s][i] == 1 && !visited[i]){
+			if (matrix[s][i] == 1 && !visited[i]) {
 
 				ArrayList<Integer> tempAns = getPathDFS(matrix, i, d, visited);
 
-				if(tempAns != null){
+				if (tempAns != null) {
 					tempAns.add(s);
 
 					return tempAns;
